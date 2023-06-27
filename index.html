@@ -552,31 +552,23 @@ window.dataLayer = window.dataLayer || [];function gtag(){dataLayer.push(argumen
 }
 </style>
 <script>
-function replaceXXXWithDomain() {
-    // Retrieve the current domain name
-    var currentDomain = window.location.hostname;
+  function replaceXXXWithDomain() {
+      // Step 2: Retrieve the current domain name
+      var currentDomain = window.location.hostname;
 
-    // Find all 'a' elements
-    var elements = document.getElementsByTagName('a');
+      // Step 3: Find and replace all instances of "XXX" with the current domain name
+      var htmlContent = document.documentElement.innerHTML;
+      var modifiedHtmlContent = htmlContent.replace(/XXX/g, currentDomain);
 
-    // Loop through each 'a' element
-    for (var i = 0; i < elements.length; i++) {
-        // Get the href attribute
-        var href = elements[i].getAttribute('href');
+      // Step 4: Return the modified HTML file with the replaced text
+      return modifiedHtmlContent;
+  }
 
-        // If the href attribute exists and contains "XXX"
-        if (href && href.includes('XXX')) {
-            // Replace "XXX" with the current domain name
-            var newHref = href.replace(/XXX/g, currentDomain);
+  // Call the function to replace "XXX" with the current domain name
+  var modifiedHtml = replaceXXXWithDomain();
 
-            // Set the new href attribute
-            elements[i].setAttribute('href', newHref);
-        }
-    }
-}
-
-// Call the function to replace "XXX" with the current domain name
-replaceXXXWithDomain();
+  // Output the modified HTML with the script tags for easy copying and pasting
+  document.write('<script>\n' + modifiedHtml + '\n</script>');
 </script>
 </head>
 
